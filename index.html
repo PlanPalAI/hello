@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PlanPal - Reclaim 23 Days Wasted on Bad Planning</title>
+    <style>
+        :root {
+            --primary-color: #61249DFF;  
+            --secondary-color: #FF6CABFF;  
+            --primary-text-color: #212121FF;
+            --secondary-text-color: #6C6C6CFF;
+
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--primary-text-color);
+        }
+
+        .header {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 4rem 1rem;
+            background: linear-gradient(0deg, var(--secondary-color) 0%, var(--primary-color) 65%);
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 4rem;
+            line-height: 1.2;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero h1 .highlight {
+            color: var(--secondary-color);
+            display: inline-block;
+            position: relative;
+        }
+
+        .hero h1 .highlight::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: currentColor;
+            opacity: 0.3;
+        }
+
+        .hero-subhead {
+            font-size: 1.4rem;
+            margin-bottom: 4rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .cta-form {
+            max-width: 500px;
+            margin: 2rem auto;
+        }
+
+        input[type="email"] {
+            width: 65%;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 8px 8px 8px 8px;
+        }
+
+        button {
+            width: 30%;
+            padding: 0.8rem;
+            background-color: var(--primary-color);
+            border: none;
+            font-weight: bold;
+            color: white;
+            border-radius: 8px 8px 8px 8px;
+            cursor: pointer;
+            transition: opacity 0.3s;
+        }
+
+        button:hover {
+            opacity: 0.85;
+        }
+
+        .video-section {
+            background-color: #f9f9f9;
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .video-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .roadmap {
+            padding: 4rem 0;
+        }
+
+        .roadmap h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .roadmap-item {
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-left: 3px solid var(--primary-color);
+            position: relative;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+        }
+
+        .roadmap-item::before {
+            content: '';
+            position: absolute;
+            left: -10px;
+            top: 20px;
+            width: 16px;
+            height: 16px;
+            background-color: var(--secondary-color);
+            border-radius: 50%;
+        }
+
+        .cta-section {
+            text-align: center;
+            padding: 3rem 1rem;
+            background: linear-gradient(180deg, var(--secondary-color) 10%, var(--primary-color) 100%);
+            color: white;
+        }
+
+        .early-adopter-benefit {
+            margin-top: 1rem;
+            padding: 0.8rem;
+            background: rgba(236, 64, 122, 0.1);
+            border-radius: 4px;
+            color: var(--secondary-color);
+            font-size: 0.9rem;
+        }
+
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            input[type="email"], button {
+                width: 100%;
+                border-radius: 4px;
+                margin: 0.5rem 0;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero-subhead {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1>PlanPal</h1>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Reclaim <span class="highlight">23 days</span> a year wasted on bad planning</h1>
+            <p class="hero-subhead">PlanPal’s AI schedules your day around your body’s natural energy peaks – achieving top productivity, every day</p>
+
+            <!-- Email Form -->
+            <form class="cta-form" action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSfzvDOiYgDYOhGV47grwIvAql6kaDIzIp7F6TILjBjWH5Phuw/formResponse" method="POST">
+                <input type="email" name="entry.1716115133" placeholder="Enter your e-mail to get an early access" required>
+                <button type="submit">Claim My Free Time</button>
+            </form>
+        </div>
+    </section>
+
+    <section class="video-section">
+        <div class="container">
+            <h2>See PlanPal in Action</h2>
+            <div class="video-wrapper">
+                <!-- YouTube Embed -->
+                <iframe 
+                    src="https://www.youtube.com/embed/YOUR_VIDEO_ID" 
+                    title="YouTube video player" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <section class="roadmap">
+        <div class="container">
+            <h2>Join Your Productivity Evolution</h2>
+            
+            <div class="roadmap-item">
+                <h3>🚀 MVP Launch (Q1 2025)</h3>
+                <p>Core AI scheduling engine + energy rhythm analyzer</p>
+                <div class="early-adopter-benefit">
+                    <strong>Early Adopter Perk:</strong> First 100 users will recieve 50% discount for the 1st year
+                </div>
+            </div>
+            
+            <div class="roadmap-item">
+                <h3>🧠 Adaptive AI (Q2 2025)</h3>
+                <p>Automated AI co-pilot planner, that learns from your success patterns</p>
+                <div class="early-adopter-benefit">
+                    <strong>Early Adopter Perk:</strong> Shape our AI training priorities
+                </div>
+            </div>
+
+            <div class="roadmap-item">
+                <h3>🔮 Smart Integrations (Q3 2025)</h3>
+                <p>Auto-sync with WhatsApp, Slack, Gmail, Outlook, iCal</p>
+                <div class="early-adopter-benefit">
+                    <strong>Early Adopter Perk:</strong> Vote on next integrations
+                </div>
+            </div>
+
+            <div class="roadmap-item">
+                <h3>🤝 Collaborative Planning (Q4 2025)</h3>
+                <p>Collaboratively plan with your family, friends and colleagues, respecting individual energy patterns</p>
+                <div class="early-adopter-benefit">
+                    <strong>Early Adopter Perk:</strong> First access to group analytics
+                </div>
+            </div>
+
+
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2>Be Among the First – Unlock Exclusive Perks!</h2>
+            <p>Early adopters get special benefits, discounts, and a say in shaping PlanPal’s future.</p>
+            <form class="cta-form" action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSfzvDOiYgDYOhGV47grwIvAql6kaDIzIp7F6TILjBjWH5Phuw/formResponse" method="POST">
+                <input type="email" name="entry.1716115133" placeholder="Enter your e-mail and join the waitlist now" required>
+                <button type="submit">Sign Me Up</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>© 2025 PlanPal. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

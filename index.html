@@ -195,8 +195,28 @@
             .hero-subhead {
                 font-size: 1.1rem;
             }
+
         }
     </style>
+
+<script>
+    function handleSubmit(event, form) {
+        event.preventDefault();
+        let email = form.querySelector('input[type="email"]').value;
+        if (email) {
+            let formData = new FormData();
+            formData.append('entry.1716115133', email);
+            fetch('https://docs.google.com/forms/u/0/d/e/1FAIpQLSfzvDOiYgDYOhGV47grwIvAql6kaDIzIp7F6TILjBjWH5Phuw/formResponse', {
+                method: 'POST',
+                body: formData,
+                mode: 'no-cors'
+            }).then(() => {
+                form.innerHTML = '<p class="thank-you-message">Thank you, we will contact you soon!</p>';
+            });
+        }
+    }
+</script>
+
 </head>
 <body>
     <header class="header">
@@ -211,8 +231,8 @@
             <p class="hero-subhead">PlanPal’s AI schedules your day around your body’s natural energy peaks – achieving top productivity, every day</p>
 
             <!-- Email Form -->
-            <form class="cta-form" action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSfzvDOiYgDYOhGV47grwIvAql6kaDIzIp7F6TILjBjWH5Phuw/formResponse" method="POST">
-                <input type="email" name="entry.1716115133" placeholder="Enter your e-mail to get an early access" required>
+            <form class="cta-form" onsubmit="handleSubmit(event, this)">
+                <input type="email" name="email" placeholder="Enter your e-mail to get an early access" required>
                 <button type="submit">Claim My Free Time</button>
             </form>
         </div>
@@ -270,7 +290,6 @@
                 </div>
             </div>
 
-
         </div>
     </section>
 
@@ -278,8 +297,8 @@
         <div class="container">
             <h2>Be Among the First – Unlock Exclusive Perks!</h2>
             <p>Early adopters get special benefits, discounts, and a say in shaping PlanPal’s future.</p>
-            <form class="cta-form" action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSfzvDOiYgDYOhGV47grwIvAql6kaDIzIp7F6TILjBjWH5Phuw/formResponse" method="POST">
-                <input type="email" name="entry.1716115133" placeholder="Enter your e-mail and join the waitlist now" required>
+            <form class="cta-form" onsubmit="handleSubmit(event, this)">
+                <input type="email" name="name" placeholder="Enter your e-mail and join the waitlist now" required>
                 <button type="submit">Sign Me Up</button>
             </form>
         </div>

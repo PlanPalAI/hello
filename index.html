@@ -10,7 +10,6 @@
             --secondary-color: #FF6CABFF;  
             --primary-text-color: #212121FF;
             --secondary-text-color: #6C6C6CFF;
-
         }
 
         * {
@@ -141,6 +140,11 @@
             margin-bottom: 2rem;
         }
 
+        .roadmap-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         .roadmap-item {
             padding: 1.5rem;
             margin: 2rem 0;
@@ -148,6 +152,9 @@
             position: relative;
             background: rgba(255, 255, 255, 0.1);
             border-radius: 8px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
 
         .roadmap-item::before {
@@ -206,6 +213,38 @@
             border-radius: 8px;
             color: white;
             font-size: 1.2rem;
+        }
+
+        /* Perks List Styling */
+        .perks-list {
+            max-width: 600px;
+            margin: 2rem auto;
+            text-align: left;
+        }
+
+        .perk-item {
+            margin: 1.5rem 0;
+            padding-left: 6rem;
+            position: relative;
+            font-size: 1.1rem;
+            color: white;
+            opacity: 0;
+            transform: translateX(-20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .perk-item.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .checkmark {
+            position: absolute;
+            padding-left: 3rem;
+            left: 0;
+            color: var(--secondary-color);
+            font-size: 1.5rem;
+            line-height: 1.2;
         }
 
     </style>
@@ -292,7 +331,23 @@
     <section class="cta-section">
         <div class="container">
             <h2>Be Among the First – Unlock Exclusive Perks!</h2>
-            <p>Early adopters get special benefits, discounts, and a say in shaping PlanPal’s future.</p>
+
+            <!-- List of Perks -->
+            <div class="perks-list">
+                <div class="perk-item">
+                    <span class="checkmark">✓</span> First 100 users will receive 50% discount for the 1st year
+                </div>
+                <div class="perk-item">
+                    <span class="checkmark">✓</span> Shape our AI training priorities
+                </div>
+                <div class="perk-item">
+                    <span class="checkmark">✓</span> Vote on next integrations
+                </div>
+                <div class="perk-item">
+                    <span class="checkmark">✓</span> First access to group analytics
+                </div>
+            </div>
+
             <!-- E-mail form, will be saved to Google Forms -->
             <form id="cta-form-2" class="cta-form">
                 <input type="email" id="email-input-2" name="entry.1716115133" placeholder="Enter your e-mail, claim your spot!" required>
@@ -349,11 +404,47 @@
                 });
             });
         }
-
         // Initialize form handlers
         handleFormSubmit('cta-form-1', 'email-input-1', 'thank-you-message-1'); // Hero section form
         handleFormSubmit('cta-form-2', 'email-input-2', 'thank-you-message-2'); // CTA section form
     </script>
+
+<script>
+    // Function to check if an element is in the viewport
+    function isInViewport(element) {
+        const rect = element.getBoundingClientRect();
+        return (
+            rect.top >= 0 &&
+            rect.left >= 0 &&
+            rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+            rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+        );
+    }
+
+    // Function to add animations when elements come into view
+    function animateOnScroll() {
+        const perksItems = document.querySelectorAll('.perk-item');
+        const roadmapItems = document.querySelectorAll('.roadmap-item');
+
+        perksItems.forEach((item) => {
+            if (isInViewport(item)) {
+                item.classList.add('visible');
+            }
+        });
+
+        roadmapItems.forEach((item) => {
+            if (isInViewport(item)) {
+                item.classList.add('visible');
+            }
+        });
+    }
+
+    // Add event listener for scroll
+    window.addEventListener('scroll', animateOnScroll);
+
+    // Trigger animations on page load if elements are already in view
+    animateOnScroll();
+</script>
 
 </body>
 </html>

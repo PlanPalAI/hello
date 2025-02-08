@@ -32,7 +32,10 @@
 
         .hero {
             text-align: center;
-            padding: 4rem 1rem;
+            padding-left: 1rem;
+            padding-right: 1rem;
+            padding-bottom: 6rem;
+            padding-top: 1.5rem;
             background: linear-gradient(0deg, var(--secondary-color) 0%, var(--primary-color) 65%);
             color: white;
         }
@@ -187,54 +190,47 @@
                 border-radius: 4px;
                 margin: 0.5rem 0;
             }
-
             .hero h1 {
                 font-size: 2rem;
             }
-
             .hero-subhead {
                 font-size: 1.1rem;
             }
-
         }
+
+        .thank-you-message {
+            display: none; /* Hidden by default */
+            margin-top: 2rem;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: white;
+            font-size: 1.2rem;
+        }
+
     </style>
-
-<script>
-    function handleSubmit(event, form) {
-        event.preventDefault();
-        let email = form.querySelector('input[type="email"]').value;
-        if (email) {
-            let formData = new FormData();
-            formData.append('entry.1716115133', email);
-            fetch('https://docs.google.com/forms/u/0/d/e/1FAIpQLSfzvDOiYgDYOhGV47grwIvAql6kaDIzIp7F6TILjBjWH5Phuw/formResponse', {
-                method: 'POST',
-                body: formData,
-                mode: 'no-cors'
-            }).then(() => {
-                form.innerHTML = '<p class="thank-you-message">Thank you, we will contact you soon!</p>';
-            });
-        }
-    }
-</script>
-
 </head>
+
 <body>
     <header class="header">
         <div class="container">
-            <h1>PlanPal</h1>
+            <h2>PlanPal</h2>
         </div>
     </header>
 
     <section class="hero">
         <div class="container">
             <h1>Reclaim <span class="highlight">23 days</span> a year wasted on bad planning</h1>
-            <p class="hero-subhead">PlanPal’s AI schedules your day around your body’s natural energy peaks – achieving top productivity, every day</p>
-
-            <!-- Email Form -->
-            <form class="cta-form" onsubmit="handleSubmit(event, this)">
-                <input type="email" name="email" placeholder="Enter your e-mail to get an early access" required>
+            <p class="hero-subhead">Meet your personal AI-assistant, to automatically schedule your day around your body’s natural energy peaks, achieving top productivity</p>
+            <!-- E-mail form, will be saved to Google Forms -->
+            <form id="cta-form-1" class="cta-form">
+                <input type="email" id="email-input-1" name="entry.1716115133" placeholder="Enter your e-mail for an early access" required>
                 <button type="submit">Claim My Free Time</button>
             </form>
+            <!-- Thank You Message -->
+            <div id="thank-you-message-1" class="thank-you-message">
+                Thank you! We'll contact you soon. 🎉
+            </div>
         </div>
     </section>
 
@@ -259,7 +255,7 @@
             <h2>Join Your Productivity Evolution</h2>
             
             <div class="roadmap-item">
-                <h3>🚀 MVP Launch (Q1 2025)</h3>
+                <h3>🚀 MVP Launch</h3>
                 <p>Core AI scheduling engine + energy rhythm analyzer</p>
                 <div class="early-adopter-benefit">
                     <strong>Early Adopter Perk:</strong> First 100 users will recieve 50% discount for the 1st year
@@ -267,7 +263,7 @@
             </div>
             
             <div class="roadmap-item">
-                <h3>🧠 Adaptive AI (Q2 2025)</h3>
+                <h3>🧠 Adaptive AI</h3>
                 <p>Automated AI co-pilot planner, that learns from your success patterns</p>
                 <div class="early-adopter-benefit">
                     <strong>Early Adopter Perk:</strong> Shape our AI training priorities
@@ -275,7 +271,7 @@
             </div>
 
             <div class="roadmap-item">
-                <h3>🔮 Smart Integrations (Q3 2025)</h3>
+                <h3>🔮 Smart Integrations</h3>
                 <p>Auto-sync with WhatsApp, Slack, Gmail, Outlook, iCal</p>
                 <div class="early-adopter-benefit">
                     <strong>Early Adopter Perk:</strong> Vote on next integrations
@@ -283,7 +279,7 @@
             </div>
 
             <div class="roadmap-item">
-                <h3>🤝 Collaborative Planning (Q4 2025)</h3>
+                <h3>🤝 Collaborative Planning</h3>
                 <p>Collaboratively plan with your family, friends and colleagues, respecting individual energy patterns</p>
                 <div class="early-adopter-benefit">
                     <strong>Early Adopter Perk:</strong> First access to group analytics
@@ -297,10 +293,15 @@
         <div class="container">
             <h2>Be Among the First – Unlock Exclusive Perks!</h2>
             <p>Early adopters get special benefits, discounts, and a say in shaping PlanPal’s future.</p>
-            <form class="cta-form" onsubmit="handleSubmit(event, this)">
-                <input type="email" name="name" placeholder="Enter your e-mail and join the waitlist now" required>
+            <!-- E-mail form, will be saved to Google Forms -->
+            <form id="cta-form-2" class="cta-form">
+                <input type="email" id="email-input-2" name="entry.1716115133" placeholder="Enter your e-mail, claim your spot!" required>
                 <button type="submit">Sign Me Up</button>
             </form>
+            <!-- Thank You Message -->
+            <div id="thank-you-message-2" class="thank-you-message">
+                Thank you! We'll contact you soon. 🎉
+            </div>
         </div>
     </section>
 
@@ -309,5 +310,50 @@
             <p>© 2025 PlanPal. All rights reserved.</p>
         </div>
     </footer>
+
+    <script>
+        // Function to handle form submission
+        function handleFormSubmit(formId, emailInputId, thankYouMessageId) {
+            const form = document.getElementById(formId);
+            const emailInput = document.getElementById(emailInputId);
+            const thankYouMessage = document.getElementById(thankYouMessageId);
+
+            form.addEventListener('submit', function (event) {
+                event.preventDefault(); // Prevent the default form submission
+
+                const email = emailInput.value;
+                const formData = new FormData();
+                formData.append('entry.1716115133', email);
+
+                // Hide the "Thank you" message temporarily
+                thankYouMessage.style.display = 'none';
+
+                // Submit to Google Forms
+                fetch('https://docs.google.com/forms/u/0/d/e/1FAIpQLSfzvDOiYgDYOhGV47grwIvAql6kaDIzIp7F6TILjBjWH5Phuw/formResponse', {
+                    method: 'POST',
+                    body: new URLSearchParams(formData).toString(),
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                    mode: 'no-cors' // Required for Google Forms
+                })
+                .then(() => {
+                    // Show thank-you message
+                    thankYouMessage.style.display = 'block';
+                    // Clear the email input
+                    emailInput.value = '';
+                })
+                .catch((error) => {
+                    console.error('Error submitting form:', error);
+                    alert('Something went wrong. Please try again.');
+                });
+            });
+        }
+
+        // Initialize form handlers
+        handleFormSubmit('cta-form-1', 'email-input-1', 'thank-you-message-1'); // Hero section form
+        handleFormSubmit('cta-form-2', 'email-input-2', 'thank-you-message-2'); // CTA section form
+    </script>
+
 </body>
 </html>
